@@ -6,6 +6,4 @@ Membres : Rayan BENLABIDI
           Samir BENABDALLAH
           Adrien SALLÉ
 
-08/06/2020 - AS :
-
 Ajout des codes pour la carte Arduino et l'application Qt
