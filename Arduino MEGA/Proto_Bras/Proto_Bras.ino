@@ -4,6 +4,8 @@
 * Carte Arduino MEGA
 */
 
+int incomingByte = 0; // for incoming serial data
+
 //Pin Moteur 1 Pouce
 int INT11 = 2; //PWM pouce
 int INT21 = 3; //PWM pouce
@@ -28,6 +30,8 @@ int INT25 = 11; //PWM auriculaire
 
 void setup()
 {
+  Serial.begin(9600); // opens serial port, sets data rate to 9600 
+  
   //On configure les broches en sorties
   //Configuration broches MOT1
   pinMode(INT11,OUTPUT);
@@ -52,17 +56,11 @@ void setup()
 
 void loop()
 {
-
-  actionMoteur(5,-1,12);
-  delay(5000);
-  actionMoteur(5,1,255);
-  delay(5000);
-  actionMoteur(5,-1,250);
-  delay(5000);
-  actionMoteur(5,1,12);
-  delay(5000);
+  actionMoteur(5,-1,15);
+  delay(1000);
+  actionMoteur(5,1,15);
+  delay(1000);
   
-
 }
 
 //Gestion du mouvement des moteurs
@@ -109,6 +107,7 @@ void actionMoteur (int moteur, int sens, int pourcentage)
   {
     pin2 = pin1;
     pin1 = pinS;
+    
     pinS = pin2;
   }
   
@@ -119,3 +118,28 @@ void actionMoteur (int moteur, int sens, int pourcentage)
   analogWrite(pinS,255);
   analogWrite(pin1,puissance);
 }
+/*
+void serialEvent()
+{
+// send data only when you receive data:
+  if (Serial.available() > 0) {
+    // read the incoming byte:
+    incomingByte = Serial.read();
+
+    if(incomingByte == 54)
+    {
+      actionMoteur(5,1,90);
+    }
+    else if (incomingByte == 52)
+    {
+      actionMoteur(5,-1,90);
+    }
+    
+    actionMoteur(5,1,0);
+    // say what you got:
+    Serial.print("I received: ");
+    Serial.println(incomingByte, DEC);
+  }
+
+}
+*/
