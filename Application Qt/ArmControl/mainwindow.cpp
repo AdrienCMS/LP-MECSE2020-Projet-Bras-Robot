@@ -1,9 +1,15 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "mythread.h"
 
 #include <QSerialPort>
 #include <QSerialPortInfo>
+#include <QtDebug>
+#include <QtCore>
+#include <QtGui>
 #include <QPixmap>
+
+ myThread com;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -22,3 +28,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+
+void MainWindow::on_pushButton_9_clicked()
+{
+    qInfo() << "click\n";
+    com.start();
+}
