@@ -5,7 +5,5 @@ Membres : Rayan BENLABIDI
           Paul RAPIN
           Samir BENABDALLAH
           Adrien SALLÉ
+Branche d'Adrien
 
-08/06/2020 - AS :
-
-Ajout des codes pour la carte Arduino et l'application Qt
